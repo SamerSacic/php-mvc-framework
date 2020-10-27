@@ -1,0 +1,18 @@
+{
+    "name": "sascode/php-mvc-freamwork",
+    "authors": [
+        {
+            "name": "Samer Sacic",
+            "email": "samer.sacic@die-werber.ch"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+        "ext-pdo": "*",
+        "vlucas/phpdotenv": "^5.2"
+    }
+}
