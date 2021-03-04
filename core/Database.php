@@ -1,8 +1,6 @@
 <?php
 
-
 namespace app\core;
-
 
 use PDO;
 
@@ -12,9 +10,9 @@ class Database
 
     public function __construct(array $config)
     {
-        $dsn = $config['dsn'];
-        $username = $config['username'];
-        $password = $config['password'];
+        $dsn = $config['dsn'] ?? '';
+        $username = $config['username'] ?? '';
+        $password = $config['password'] ?? '';
         $this->pdo = new PDO($dsn, $username, $password);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -33,6 +31,7 @@ class Database
             }
 
             require_once Application::$ROOT_DIR . '/migrations/' . $migration;
+
             $className = pathinfo($migration, PATHINFO_FILENAME);
             $instance = new $className();
             $this->log("Applying migration $migration");
@@ -54,7 +53,7 @@ class Database
             id INT AUTO_INCREMENT PRIMARY KEY, 
             migration VARCHAR (255), 
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
-            ) ENGINE=INNODB; ");
+        ) ENGINE=INNODB; ");
     }
 
     public function getAppliedMigrations()
