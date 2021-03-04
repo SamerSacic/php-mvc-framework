@@ -4,7 +4,6 @@ use app\core\Application;
 
 class m0001_initial
 {
-
     public function up()
     {
         $db = Application::$app->database;
@@ -25,5 +24,4 @@ class m0001_initial
         $sql = "DROP TABLE users";
         $db->pdo->exec($sql);
     }
-
 }
